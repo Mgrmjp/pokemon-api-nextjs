@@ -1,7 +1,6 @@
-##This is a pastime project for practicing API usage and getting familiar with situations where there might not be data in certain situations.
+# This is a pastime project for practicing API usage and getting familiar with situations where there might not be data in certain situations.
 
-##It's also for getting used to JSX writing and giving my brain a chance to get quicker at reading it.
-
+## It's also for getting used to JSX writing and giving my brain a chance to get quicker at reading it.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
