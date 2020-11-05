@@ -26,10 +26,26 @@
     letter-spacing: 2px;
     font-size: 3em;
     margin-top: 2em;
+    margin-bottom: 0;
+}
+
+.pokemonType {
+    font-size: 1.1em;
+    margin: 0;
+    margin-bottom: 1em;
+    letter-spacing: 2px;
+    padding: 8px;
+    border-radius: 4px;
 }
 
 .spriteContainer {
     flex-direction: row;
+}
+
+.spriteRow {
+    flex-direction: row;
+    background-color: rgb(2, 31, 24);
+    border-radius: 1em;
 }
 
 .abilityList {
