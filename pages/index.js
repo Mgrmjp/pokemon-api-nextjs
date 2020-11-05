@@ -4,7 +4,7 @@ import Evolution from "../components/evolution";
 import Head from "next/head";
 
 export default function Home() {
-  const [name, setName] = useState("gyarados");
+  const [name, setName] = useState("meowth");
 
   const [id, setId] = useState(0);
 
