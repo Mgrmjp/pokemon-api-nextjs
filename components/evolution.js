@@ -36,11 +36,17 @@ export default function Evolution(props) {
         response.json().then(function (data) {
           //console.log(data);
           console.log(data.chain.evolves_to[0].species.name);
-          console.log(data.chain.evolves_to[0].evolves_to[0].species.name);
+          if (data.chain.evolves_to[0].evolves_to[0]) {
+            console.log(data.chain.evolves_to[0].evolves_to[0].species.name);
+          }
           const firstEvolve = data.chain.evolves_to[0].species.name;
-          const secondEvolve =
-            data.chain.evolves_to[0].evolves_to[0].species.name;
-          const evolvesInto = [firstEvolve, secondEvolve];
+          if (data.chain.evolves_to[0].evolves_to[0]) {
+            const secondEvolve =
+              data.chain.evolves_to[0].evolves_to[0].species.name;
+            const evolvesInto = [firstEvolve, secondEvolve];
+            setEvolve(evolvesInto);
+          }
+          const evolvesInto = [firstEvolve];
           console.log(evolvesInto);
           setEvolve(evolvesInto);
         });
