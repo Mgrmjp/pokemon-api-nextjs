@@ -4,7 +4,7 @@ import Evolution from "../components/evolution";
 import Head from "next/head";
 
 export default function Home() {
-  const [name, setName] = useState("magikarp");
+  const [name, setName] = useState("gyarados");
 
   const [id, setId] = useState(0);
 
@@ -54,18 +54,20 @@ export default function Home() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <div className={styles.mainContainer}>
-        <h1 className={styles.pokeName}>{name}</h1>
+      <div className={styles.page}>
+        <div className={styles.mainContainer}>
+          <h1 className={styles.pokeName}>{name}</h1>
 
-        <div className={styles.spriteContainer}>
-          <img style={{ width: "200px" }} src={sprite} />
+          <div className={styles.spriteContainer}>
+            <img style={{ width: "200px" }} src={sprite} />
 
-          <img style={{ width: "200px" }} src={spriteShiny} />
+            <img style={{ width: "200px" }} src={spriteShiny} />
+          </div>
+
+          <ul className={styles.abilityList}>{abilitiesList}</ul>
+
+          <Evolution pokemonId={id} />
         </div>
-
-        <ul className={styles.abilityList}>{abilitiesList}</ul>
-
-        <Evolution pokemonId={id} />
       </div>
 
       <style jsx global>{`

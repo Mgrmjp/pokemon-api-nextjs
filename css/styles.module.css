@@ -1,8 +1,17 @@
+.page {
+    background-color: rgb(29, 110, 82);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
 .mainContainer {
     display: flex;
     flex: 1;
     flex-direction: column;
-    width: 100vw;
+    width: 80vw;
     height: 100vh;
     background-color: rgb(15, 44, 34);
     align-items: center;

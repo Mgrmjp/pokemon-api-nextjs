@@ -45,10 +45,10 @@ export default function Evolution(props) {
               data.chain.evolves_to[0].evolves_to[0].species.name;
             const evolvesInto = [firstEvolve, secondEvolve];
             setEvolve(evolvesInto);
+          } else {
+            const evolvesInto = [firstEvolve];
+            setEvolve(evolvesInto);
           }
-          const evolvesInto = [firstEvolve];
-          console.log(evolvesInto);
-          setEvolve(evolvesInto);
         });
       })
       .catch(function (err) {
