@@ -4,19 +4,34 @@ import Evolution from "../components/evolution";
 import Head from "next/head";
 
 export default function Home() {
-  const [name, setName] = useState("magikarp");
-
+  const [name, setName] = useState("bulbasaur");
   const [id, setId] = useState(0);
-
   const [sprite, setSprite] = useState("");
-
   const [spriteShiny, setSpriteShiny] = useState("");
-
   const [abilities, setAbilities] = useState([]);
-
   const [type, setType] = useState("");
+  const [color, setColor] = useState("red");
 
-  const [color, setColor] = useState("");
+  const typeHexCodes = {
+    grass: "#78C850",
+    poison: "#A040A0",
+    fire: "#F08030",
+    flying: "#A890F0",
+    water: "#6890F0",
+    bug: "#A8B820",
+    normal: "#A8A878",
+    electric: "#F8D030",
+    ground: "#E0C068",
+    fairy: "#EE99AC",
+    fighting: "#C03028",
+    psychic: "#F85888",
+    rock: "#B8A038",
+    ice: "#98D8D8",
+    dragon: "#7038F8",
+    ghost: "#705898",
+    dark: "#705848",
+    steel: "#B8B8D0",
+  };
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon/" + name)
@@ -34,13 +49,9 @@ export default function Home() {
           console.log(data);
 
           setId(data.id);
-
           setSprite(data.sprites.front_default);
-
           setSpriteShiny(data.sprites.front_shiny);
-
           setAbilities(data.abilities);
-
           setType(data.types[0].type.name);
         });
 
@@ -57,9 +68,40 @@ export default function Home() {
       });
   }, []);
 
-  const abilitiesList = abilities.map((item, index) => (
-    <li key={index}>{item.ability.name}</li>
-  ));
+  let abilitiesList = "";
+
+  const abilitiesListPromise = Promise.all(
+    abilities.map((item, index) => {
+      const url = `https://pokemondb.net/ability/${item.ability.name}`;
+      const className = 'grid-col';
+
+      return fetchDataAndExtractFirstParagraph(url, className)
+        .then(extractedText => <li key={index}>{item.ability.name} - {extractedText}</li>);
+    })
+  );
+
+  // Later in your code, when you need the resolved abilitiesList
+  abilitiesListPromise.then(abilitiesList => {
+    abilitiesList = abilitiesList;
+  });
+
+  async function fetchDataAndExtractFirstParagraph(url, className) {
+    try {
+      const response = await fetch(url);
+
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+      const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+      const firstParagraph = doc.querySelector(`.${className} p:first-of-type`);
+
+      const extractedText = firstParagraph?.textContent.trim() || '';
+      console.log(extractedText);
+
+      return extractedText;
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  }
 
   return (
     <>
@@ -72,15 +114,18 @@ export default function Home() {
         <div className={styles.mainContainer}>
           <h1 className={styles.pokeName}>{name}</h1>
 
-          <h1 style={{ backgroundColor: color }} className={styles.pokemonType}>
+          <span
+            style={{ backgroundColor: typeHexCodes[type] + "80" }}
+            className={styles.pokemonType}
+          >
             {type}
-          </h1>
+          </span>
 
           <div className={styles.spriteRow}>
             <div className={styles.spriteContainer}>
-              <img style={{ width: "250px" }} src={sprite} />
+              <img style={{ width: "200px" }} src={sprite} />
 
-              <img style={{ width: "250px" }} src={spriteShiny} />
+              <img style={{ width: "200px" }} src={spriteShiny} />
             </div>
           </div>
 
@@ -89,21 +134,6 @@ export default function Home() {
           <Evolution pokemonId={id} />
         </div>
       </div>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
     </>
   );
 }

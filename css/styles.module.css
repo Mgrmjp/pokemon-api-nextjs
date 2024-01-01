@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Itim:regular,bold,italic&subset=latin,latin-ext');
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;400;800&display=swap');
 
 .page {
     background-color: rgb(2, 31, 24);
     display: flex;
-    flex: 1;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
-    font-family: 'Itim', sans-serif;
+    height: 100dvh;
+    font-family: 'Playpen Sans', cursive;
 }
 
 .mainContainer {
@@ -15,7 +14,7 @@
     flex: 1;
     flex-direction: column;
     width: 80vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: rgb(15, 44, 34);
     align-items: center;
     color: white;
@@ -24,46 +23,60 @@
 .pokeName {
     text-transform: capitalize;
     letter-spacing: 2px;
-    font-size: 3em;
-    margin-top: 2em;
+    font-size: 3rem;
+    margin-top: 2rem;
     margin-bottom: 0;
 }
 
 .pokemonType {
-    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
     margin: 0;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     letter-spacing: 2px;
     padding: 8px;
     border-radius: 4px;
+    line-height: 1;
+    text-shadow: 0 1px 1px black;
 }
 
 .spriteContainer {
+    display: flex;
     flex-direction: row;
 }
 
 .spriteRow {
     flex-direction: row;
     background-color: rgb(2, 31, 24);
-    border-radius: 1em;
+    border-radius: 1rem;
+    box-shadow: 0 3px 24px rgb(3, 22, 14);
+    margin-bottom: 1rem;
+}
+
+.spriteRow img {
+    image-rendering: pixelated;
 }
 
 .abilityList {
+    display: flex;
     list-style: none;
     text-transform: capitalize;
-    font-size: 1.4em;
     text-align: left;
-    color: rgb(230, 135, 72);
+    color: rgb(255, 255, 255);
+    row-gap: 1rem;
+    column-gap: 1rem;
 }
 
-.abilityList > li {
-    padding: 0.5em;
+.abilityList li {
+    font-size: 1.1rem;
+    font-weight: 100;
 }
 
 .evolutionName {
     text-transform: capitalize;
-    padding: 2em;
-    font-size: 1.5em;
+    padding: 2rem;
+    font-size: 1.5rem;
 }
 
 .evolutionRow {
@@ -72,4 +85,9 @@
     flex-direction: row;
     align-content: center;
     align-items: center;
+}
+
+.evolutions {
+    display: flex;
+    flex-direction: row;
 }
