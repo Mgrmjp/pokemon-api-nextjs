@@ -14,6 +14,7 @@ To start the development server, run the following commands:
 npm run dev
 # or
 yarn dev
+```
 
 Open http://localhost:3000 in your browser to view the result. Begin editing the page by modifying pages/index.js, and the page will auto-update as you make changes.
 
