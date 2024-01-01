@@ -18,9 +18,12 @@ yarn dev
 
 Open http://localhost:3000 in your browser to view the result. Begin editing the page by modifying pages/index.js, and the page will auto-update as you make changes.
 
-Learn More
-Explore more about Next.js through the following resources:
+## Learn More
 
-Next.js Documentation: Learn about Next.js features and API.
-Learn Next.js: Take an interactive Next.js tutorial.
-Feel free to check out the Next.js GitHub repository. Your feedback and contributions are always welcome!
+Explore more about Next.js and the PokeAPI through the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs): Learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn): Take an interactive Next.js tutorial.
+- [PokeAPI Documentation](https://pokeapi.co/docs/v2): Learn about the PokeAPI and available endpoints.
+
+Feel free to check out the [Next.js GitHub repository](https://github.com/vercel/next.js/). Your feedback and contributions are always welcome!
